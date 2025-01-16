@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>電磁現象</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="06d98e61-6e8f-492d-b753-c7efa18fa4d6" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb2.jpg" style="object-position:center 70%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">⚡</span></div><h1 class="page-title">電磁現象</h1><p class="page-description">電磁現象は、電気と磁気の相互作用に関連する物理現象の一部です。これらの現象は、電荷の動きや磁場の存在によって引き起こされ、光や電磁波の形でエネルギーを伝達する能力があります。電磁現象は、私たちの日常生活の多くの側面、特に電子機器の動作に深く関与しています。</p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>名稱</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>公式</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>單位</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>備註</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>圖片</th></tr></thead><tbody><tr id="ace578c2-5c38-4e3a-b2bf-6a93a3bb8773"><td class="cell-title"><a href="https://www.notion.so/ace578c25c384e3ab2bf6a93a3bb8773?pvs=21">庫侖定律</a></td><td class="cell-B~w^">F = k|q||q|(r)⁻²</td><td class="cell-AeN~"><span class="selected-value select-value-color-blue">F：力；單位：牛頓</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span></td><td class="cell-NqOr">兩點電荷與靜電力之關係式</td><td class="cell-RhS&gt;"></td></tr><tr id="a57f6dc0-a3d2-4840-a34a-c36eaa3b8feb"><td class="cell-title"><a href="https://www.notion.so/a57f6dc0a3d24840a34ac36eaa3b8feb?pvs=21">電場強度</a></td><td class="cell-B~w^">E = F (q)⁻¹                                      其中 E 與 F 為向量</td><td class="cell-AeN~"><span class="selected-value select-value-color-brown">E：電場；單位：牛頓／庫倫(N(C)⁻¹)</span><span class="selected-value select-value-color-blue">F：力；單位：牛頓</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span></td><td class="cell-NqOr">注意方向</td><td class="cell-RhS&gt;"></td></tr><tr id="616d0b2b-ba54-42b3-8d36-780d36131e4c"><td class="cell-title"><a href="https://www.notion.so/616d0b2bba5442b38d36780d36131e4c?pvs=21">電場量值</a></td><td class="cell-B~w^">E = k|q|(r)⁻²</td><td class="cell-AeN~"><span class="selected-value select-value-color-brown">E：電場；單位：牛頓／庫倫(N(C)⁻¹)</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="36ebb212-eac6-4314-83f4-f7fa0d658133"><td class="cell-title"><a href="https://www.notion.so/36ebb212eac6431483f4f7fa0d658133?pvs=21">粒子所受靜電力</a></td><td class="cell-B~w^">F = qE = 定力                                      其中 F 與 E 為向量</td><td class="cell-AeN~"><span class="selected-value select-value-color-brown">E：電場；單位：牛頓／庫倫(N(C)⁻¹)</span><span class="selected-value select-value-color-blue">F：力；單位：牛頓</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span></td><td class="cell-NqOr">粒子均勻電場中運動</td><td class="cell-RhS&gt;"></td></tr><tr id="8b9267c2-1300-4fdc-a7f7-a3c443a0da62"><td class="cell-title"><a href="https://www.notion.so/8b9267c213004fdca7f7a3c443a0da62?pvs=21">粒子只受靜電力作用</a></td><td class="cell-B~w^">a = qE(m)⁻¹ = 定量                       其中 a 與 E 為向量</td><td class="cell-AeN~"><span class="selected-value select-value-color-brown">E：電場；單位：牛頓／庫倫(N(C)⁻¹)</span><span class="selected-value select-value-color-brown">a：加速度；單位：公尺／秒² (m(s)⁻²)</span><span class="selected-value select-value-color-yellow">m：質量；單位：公斤(kg)</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span></td><td class="cell-NqOr">F = qE ⇒ a = qE(m)⁻¹ = 定量                       其中 F 、 a 與 E  為向量</td><td class="cell-RhS&gt;"></td></tr><tr id="f5d36c8f-f7d7-42ec-93c6-633c5eaaeb0a"><td class="cell-title"><a href="https://www.notion.so/f5d36c8ff7d742ec93c6633c5eaaeb0a?pvs=21">電位能</a></td><td class="cell-B~w^">U = kqq(r)⁻¹ </td><td class="cell-AeN~"><span class="selected-value select-value-color-default">U：電位能；單位：焦耳(J)</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span></td><td class="cell-NqOr">U &gt; 0 斥力位能 ； U &lt; 0 引力位能</td><td class="cell-RhS&gt;"></td></tr><tr id="13f1e389-e2ee-41d6-b3d7-033a9e1618dc"><td class="cell-title"><a href="https://www.notion.so/13f1e389e2ee41d6b3d7033a9e1618dc?pvs=21">正負電荷圓周運動中的動能 </a></td><td class="cell-B~w^">K = kqq(2r)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-purple">K：動能；單位：焦耳(J)</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-gray">r：內電阻；單位：歐姆(Ω)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="38446c11-21e9-4e13-a380-66f71592728e"><td class="cell-title"><a href="https://www.notion.so/38446c1121e94e13a38066f71592728e?pvs=21">正負電荷圓周運動中的電位能 </a></td><td class="cell-B~w^">U = -kqq(r)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-default">U：電位能；單位：焦耳(J)</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-gray">r：內電阻；單位：歐姆(Ω)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="377414a2-e42d-46bd-b538-884be11fbb3d"><td class="cell-title"><a href="https://www.notion.so/377414a2e42d46bdb538884be11fbb3d?pvs=21">正負電荷圓周運動中的力學能 </a></td><td class="cell-B~w^">E = -kqq(2r)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-gray">E：力學能；單位：焦耳(J)</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-gray">r：內電阻；單位：歐姆(Ω)</span></td><td class="cell-NqOr">E = U + k</td><td class="cell-RhS&gt;"></td></tr><tr id="5ba3ef76-d3c9-4636-9f6a-0eb487a7f7d2"><td class="cell-title"><a href="https://www.notion.so/5ba3ef76d3c946369f6a0eb487a7f7d2?pvs=21">電位</a></td><td class="cell-B~w^">V = U(q)⁻¹ = kq²(rq)⁻¹ = kq(r)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-default">U：電位能；單位：焦耳(J)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span></td><td class="cell-NqOr">單位正電荷的所有電位差</td><td class="cell-RhS&gt;"></td></tr><tr id="2183b2f2-2537-4641-924f-2295290f632f"><td class="cell-title"><a href="https://www.notion.so/2183b2f225374641924f2295290f632f?pvs=21">電位差（電壓）</a></td><td class="cell-B~w^">ΔVAB = VA - VB                              = UA(q)⁻¹ - UB(q)⁻¹                           = ΔUAB(q)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-default">U：電位能；單位：焦耳(J)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="84eabe83-bad3-45e5-a2b5-252cc3670e58"><td class="cell-title"><a href="https://www.notion.so/84eabe83bad345e5a2b5252cc3670e58?pvs=21">均勻電場中的電位差</a></td><td class="cell-B~w^">ΔVAB = Ed</td><td class="cell-AeN~"><span class="selected-value select-value-color-brown">E：電場；單位：牛頓／庫倫(N(C)⁻¹)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-gray">d：距離；單位：公尺(m)</span></td><td class="cell-NqOr">ΔUAB = qΔVAB = qEd</td><td class="cell-RhS&gt;"></td></tr><tr id="15db209f-6256-4d2b-9d7d-293cdbe2949e"><td class="cell-title"><a href="https://www.notion.so/15db209f62564d2b9d7d293cdbe2949e?pvs=21">帶電圓環軸上電場</a></td><td class="cell-B~w^">E = k|q|cosθ(r)⁻² = k|q|x(r)⁻³</td><td class="cell-AeN~"><span class="selected-value select-value-color-brown">E：電場；單位：牛頓／庫倫(N(C)⁻¹)</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span><span class="selected-value select-value-color-brown">x：距離；單位：公尺(m)</span></td><td class="cell-NqOr">r 為電場與環的距離；x 為電場與環心的距離；q為圓環電量</td><td class="cell-RhS&gt;"></td></tr><tr id="386dcb22-2993-4b6b-ad11-13d89eb7fa8d"><td class="cell-title"><a href="https://www.notion.so/386dcb2229934b6bad1113d89eb7fa8d?pvs=21">均勻帶電圓環之環軸心上電位</a></td><td class="cell-B~w^">V = kq(r)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-default">k ：庫倫常數； 9.0×10⁹ 牛頓・公尺²／庫倫²</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span></td><td class="cell-NqOr">q為圓環電量</td><td class="cell-RhS&gt;"></td></tr><tr id="295a5efa-4f8d-4f9e-8264-6ff90396efd2"><td class="cell-title"><a href="https://www.notion.so/295a5efa4f8d4f9e82646ff90396efd2?pvs=21">必歐－沙伐定律</a></td><td class="cell-B~w^">|ΔB| = μ₀I𝓁sinθ(4πr²)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span><span class="selected-value select-value-color-pink">μ₀：真空磁導率；4π×10⁻⁷特士拉・公尺／安培(m・A)</span><span class="selected-value select-value-color-red">𝓁 ：長度；單位：公尺(m)</span></td><td class="cell-NqOr">θ為 𝓁 與 r 的夾角；                                特士拉是較大單位，實用上磁場單位為高斯(G)；1(T) = 10⁴(G)</td><td class="cell-RhS&gt;"></td></tr><tr id="8cd3dd15-6042-4074-94b0-290fc389c1f0"><td class="cell-title"><a href="https://www.notion.so/8cd3dd156042407494b0290fc389c1f0?pvs=21">載流長直導線周圍磁場量值</a></td><td class="cell-B~w^">B = μ₀I(2πr)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span><span class="selected-value select-value-color-pink">μ₀：真空磁導率；4π×10⁻⁷特士拉・公尺／安培(m・A)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="af41b668-36dc-4137-91db-cad6a407a346"><td class="cell-title"><a href="https://www.notion.so/af41b66836dc413791dbcad6a407a346?pvs=21">載流圓形線圈圓心軸上磁場量值</a></td><td class="cell-B~w^">B = μ₀IR²(2r³)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span><span class="selected-value select-value-color-pink">μ₀：真空磁導率；4π×10⁻⁷特士拉・公尺／安培(m・A)</span></td><td class="cell-NqOr">R為圓形線圈的半徑；r為軸上磁場與線圈的距離</td><td class="cell-RhS&gt;"></td></tr><tr id="43e0dc84-93f9-4db9-83ca-d00f4964f3f0"><td class="cell-title"><a href="https://www.notion.so/43e0dc8493f94db983cad00f4964f3f0?pvs=21">載流非完整線圈圓心上磁場量值</a></td><td class="cell-B~w^">μ₀Iθ(4πr)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span><span class="selected-value select-value-color-pink">μ₀：真空磁導率；4π×10⁻⁷特士拉・公尺／安培(m・A)</span></td><td class="cell-NqOr">μ₀I(2r)⁻¹ × θ(2π)⁻¹ 圓弧長／圓周長</td><td class="cell-RhS&gt;"></td></tr><tr id="2269cf82-9000-4e1d-b458-52df36502452"><td class="cell-title"><a href="https://www.notion.so/2269cf8290004e1db45852df36502452?pvs=21">載流螺線管磁場量值</a></td><td class="cell-B~w^">B = μ₀nI</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-pink">μ₀：真空磁導率；4π×10⁻⁷特士拉・公尺／安培(m・A)</span></td><td class="cell-NqOr">n 為螺線管單位長度所繞的線匝數</td><td class="cell-RhS&gt;"></td></tr><tr id="6385fd45-9128-44ce-9848-6cc6166bfa9c"><td class="cell-title"><a href="https://www.notion.so/6385fd45912844ce98486cc6166bfa9c?pvs=21">載流磁場中之磁力</a></td><td class="cell-B~w^">F = I𝓁Bsinθ</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-blue">F：力；單位：牛頓</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-red">𝓁 ：長度；單位：公尺(m)</span></td><td class="cell-NqOr">θ 為 𝓁 與 B 的夾角</td><td class="cell-RhS&gt;"></td></tr><tr id="f733d987-9de1-4c0c-8ee1-6d0881af3c4d"><td class="cell-title"><a href="https://www.notion.so/f733d9879de14c0c8ee16d0881af3c4d?pvs=21">兩載流平行直導線之磁力</a></td><td class="cell-B~w^">F = μ₀II𝓁(2πr)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-blue">F：力；單位：牛頓</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-yellow">r：距離；單位：公尺(m)</span><span class="selected-value select-value-color-pink">μ₀：真空磁導率；4π×10⁻⁷特士拉・公尺／安培(m・A)</span><span class="selected-value select-value-color-red">𝓁 ：長度；單位：公尺(m)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="1b405cbf-1d4b-4997-8dbe-3a8ce5d0ba6d"><td class="cell-title"><a href="https://www.notion.so/N-1b405cbf1d4b49978dbe3a8ce5d0ba6d?pvs=21">N匝線圈磁場中的磁力矩</a></td><td class="cell-B~w^">τ = NBAIsinθ</td><td class="cell-AeN~"><span class="selected-value select-value-color-default">A：面積；單位：平方公尺(m²)</span><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-blue">τ：力矩量值；單位：牛頓・公尺(N・m)</span></td><td class="cell-NqOr">θ為 A 與 B 的夾角</td><td class="cell-RhS&gt;"></td></tr><tr id="4ce226c5-12e8-4713-8386-a4c9b67419d2"><td class="cell-title"><a href="https://www.notion.so/4ce226c512e847138386a4c9b67419d2?pvs=21">帶電質點磁場所受磁力</a></td><td class="cell-B~w^">F = qvBsinθ</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-blue">F：力；單位：牛頓</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-blue">v：速度；單位：公尺／秒(m／s)</span></td><td class="cell-NqOr">θ為 v 與 B 的夾角</td><td class="cell-RhS&gt;"></td></tr><tr id="e2129973-5b98-45c3-b2f6-8fb4b72ea1e1"><td class="cell-title"><a href="https://www.notion.so/e21299735b9845c3b2f68fb4b72ea1e1?pvs=21">法拉第電磁感應定律</a></td><td class="cell-B~w^">Φ = BAcosθ</td><td class="cell-AeN~"><span class="selected-value select-value-color-default">A：面積；單位：平方公尺(m²)</span><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-yellow">Φ：磁通量；單位：韋伯(Wb)</span></td><td class="cell-NqOr">θ 為 B 與 A向量 的夾角；                                磁場量值可為磁通量密度因此                  1T = 1Wb／m²</td><td class="cell-RhS&gt;"></td></tr><tr id="589ee440-94c2-446f-b526-57284145d01a"><td class="cell-title"><a href="https://www.notion.so/589ee44094c2446fb52657284145d01a?pvs=21">法拉第電磁感應定律                   平均電動勢</a></td><td class="cell-B~w^">ε = -ΔΦ(Δt)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-pink">t：時間；單位：秒(s)</span><span class="selected-value select-value-color-yellow">Φ：磁通量；單位：韋伯(Wb)</span><span class="selected-value select-value-color-brown">ε：電動勢；單位：伏特(V)</span></td><td class="cell-NqOr">若有N匝則為N數倍</td><td class="cell-RhS&gt;"></td></tr><tr id="97bc7490-b6b6-442e-b263-dd6dd8b82617"><td class="cell-title"><a href="https://www.notion.so/97bc7490b6b6442eb263dd6dd8b82617?pvs=21">法拉第電磁感應定律                   瞬時電動勢</a></td><td class="cell-B~w^">ε = -dΦ(dt)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-pink">t：時間；單位：秒(s)</span><span class="selected-value select-value-color-yellow">Φ：磁通量；單位：韋伯(Wb)</span><span class="selected-value select-value-color-brown">ε：電動勢；單位：伏特(V)</span></td><td class="cell-NqOr">若有N匝則為N數倍；d為微分</td><td class="cell-RhS&gt;"></td></tr><tr id="5463ccc5-752b-4e63-afeb-aca5e7040ae7"><td class="cell-title"><a href="https://www.notion.so/5463ccc5752b4e63afebaca5e7040ae7?pvs=21">導線切割磁力線產生之電動勢</a></td><td class="cell-B~w^">ε = vB𝓁</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">B：磁場；單位：特士拉(T)</span><span class="selected-value select-value-color-blue">v：速度；單位：公尺／秒(m／s)</span><span class="selected-value select-value-color-red">𝓁 ：長度；單位：公尺(m)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="ba8ec5f6-20c9-4c56-abd4-dbe9486eedde"><td class="cell-title"><a href="https://www.notion.so/ba8ec5f620c94c56abd4dbe9486eedde?pvs=21">理想變壓器</a></td><td class="cell-B~w^">IA(IB)⁻¹ = VB(VA)⁻¹ = NB(NA)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span></td><td class="cell-NqOr">IA主線圈輸入電流；IB副線圈輸出電流</td><td class="cell-RhS&gt;"></td></tr><tr id="959f0c3e-5634-4c0d-9c0e-e56abcd4b733"><td class="cell-title"><a href="https://www.notion.so/959f0c3e56344c0d9c0ee56abcd4b733?pvs=21">電流</a></td><td class="cell-B~w^"><em>I</em> = q(<strong>Δt</strong>)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-pink">t：時間；單位：秒(s)</span></td><td class="cell-NqOr">單位時間通過某截面的電量</td><td class="cell-RhS&gt;"></td></tr><tr id="2c71495e-13e3-491f-b59c-6dac157b0f00"><td class="cell-title"><a href="https://www.notion.so/2c71495e13e3491fb59c6dac157b0f00?pvs=21">電動勢</a></td><td class="cell-B~w^">ε = W(q)⁻¹</td><td class="cell-AeN~"><span class="selected-value select-value-color-blue">W：功；單位：焦耳(J)</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-brown">ε：電動勢；單位：伏特(V)</span></td><td class="cell-NqOr">單位電荷所能作的功</td><td class="cell-RhS&gt;"></td></tr><tr id="93556cff-1360-4ef8-9cb9-3a7f8f41695a"><td class="cell-title"><a href="https://www.notion.so/93556cff13604ef89cb93a7f8f41695a?pvs=21">電池端電壓（理想電池）</a></td><td class="cell-B~w^">V = <strong>ΔU(q)⁻¹</strong></td><td class="cell-AeN~"><span class="selected-value select-value-color-default">U：電位能；單位：焦耳(J)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span></td><td class="cell-NqOr">=電池的電動勢</td><td class="cell-RhS&gt;"></td></tr><tr id="80043cdb-cbb8-40c0-9d9e-eaccb9e133d5"><td class="cell-title"><a href="https://www.notion.so/80043cdbcbb840c09d9eeaccb9e133d5?pvs=21">電池端電壓（非理想電池）</a></td><td class="cell-B~w^">V = ε - Ir</td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-gray">r：內電阻；單位：歐姆(Ω)</span><span class="selected-value select-value-color-brown">ε：電動勢；單位：伏特(V)</span></td><td class="cell-NqOr">簡單電路圖如圖：                                Vba = ε -Ir = IR = Vcd                        R：電阻；單位：歐姆(Ω)</td><td class="cell-RhS&gt;"><span style="margin-right:6px"><a href="%E9%9B%BB%E7%A3%81%E7%8F%BE%E8%B1%A1%2006d98e616e8f492db753c7efa18fa4d6/%E9%9B%BB%E6%B1%A0%E7%AB%AF%E9%9B%BB%E5%A3%93%EF%BC%88%E9%9D%9E%E7%90%86%E6%83%B3%E9%9B%BB%E6%B1%A0%EF%BC%89%2080043cdbcbb840c09d9eeaccb9e133d5/IMG_DAA49D0DE5D1-1.jpeg"><img style="width:20px;max-height:24px" src="%E9%9B%BB%E7%A3%81%E7%8F%BE%E8%B1%A1%2006d98e616e8f492db753c7efa18fa4d6/%E9%9B%BB%E6%B1%A0%E7%AB%AF%E9%9B%BB%E5%A3%93%EF%BC%88%E9%9D%9E%E7%90%86%E6%83%B3%E9%9B%BB%E6%B1%A0%EF%BC%89%2080043cdbcbb840c09d9eeaccb9e133d5/IMG_DAA49D0DE5D1-1.jpeg" alt="IMG_DAA49D0DE5D1-1.jpeg"/></a></span></td></tr><tr id="1fe5486b-36b5-44ae-a42c-193656707959"><td class="cell-title"><a href="https://www.notion.so/1fe5486b36b544aea42c193656707959?pvs=21">電阻</a></td><td class="cell-B~w^">R = V(I)<strong>⁻¹</strong></td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-orange">R：電阻；單位：歐姆(Ω)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="0089759f-2ce6-494a-a51c-7a2065b2498e"><td class="cell-title"><a href="https://www.notion.so/0089759f2ce6494aa51c7a2065b2498e?pvs=21">電阻率</a></td><td class="cell-B~w^">R = ρ𝓁(A)<strong>⁻¹</strong></td><td class="cell-AeN~"><span class="selected-value select-value-color-default">A：面積；單位：平方公尺(m²)</span><span class="selected-value select-value-color-orange">R：電阻；單位：歐姆(Ω)</span><span class="selected-value select-value-color-yellow">ρ：電阻率；單位：歐姆・公尺(Ω・m)</span><span class="selected-value select-value-color-red">𝓁 ：長度；單位：公尺(m)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="94d9cd86-5a77-45ee-b06d-cd52fc0c1859"><td class="cell-title"><a href="https://www.notion.so/94d9cd865a7745eeb06dcd52fc0c1859?pvs=21">歐姆定律</a></td><td class="cell-B~w^">R = V(I)<strong>⁻¹ = 定值</strong></td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-orange">R：電阻；單位：歐姆(Ω)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span></td><td class="cell-NqOr">須符合歐姆式導體或線性導體</td><td class="cell-RhS&gt;"></td></tr><tr id="6ec1e609-521a-4fcc-bba2-d1f67ef99967"><td class="cell-title"><a href="https://www.notion.so/6ec1e609521a4fccbba2d1f67ef99967?pvs=21">電阻串聯</a></td><td class="cell-B~w^">R = R₁ + R₂ + ⋯ Rₙ</td><td class="cell-AeN~"><span class="selected-value select-value-color-orange">R：電阻；單位：歐姆(Ω)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="6cde3201-65c0-4d5f-aed5-c6461acd88fd"><td class="cell-title"><a href="https://www.notion.so/6cde320165c04d5faed5c6461acd88fd?pvs=21">電阻並聯</a></td><td class="cell-B~w^">R = (R₁)<strong>⁻¹</strong> + (R₂)<strong>⁻¹</strong> + ⋯ (Rₙ)<strong>⁻¹</strong></td><td class="cell-AeN~"><span class="selected-value select-value-color-orange">R：電阻；單位：歐姆(Ω)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="b8fa88e5-2cb8-4667-880d-4172256200a5"><td class="cell-title"><a href="https://www.notion.so/b8fa88e52cb84667880d4172256200a5?pvs=21">克希荷夫定律                                    電流定律</a></td><td class="cell-B~w^">ΣI流入 = ΣI流出 or ΣI = 0</td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="133dc141-7128-4bbb-b1bc-edb29e937ddc"><td class="cell-title"><a href="https://www.notion.so/133dc14171284bbbb1bcedb29e937ddc?pvs=21">克希荷夫定律                                    電壓定律</a></td><td class="cell-B~w^">ΣV上升 = ΣV下降 or ΣV = 0</td><td class="cell-AeN~"><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span></td><td class="cell-NqOr"></td><td class="cell-RhS&gt;"></td></tr><tr id="560b6cac-18da-4a20-99fa-5b86b48c888d"><td class="cell-title"><a href="https://www.notion.so/560b6cac18da4a2099fa5b86b48c888d?pvs=21">焦耳定律</a></td><td class="cell-B~w^">P = IV = I²R = V²(R)<strong>⁻¹</strong></td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-blue">P：電功率；單位：瓦特(W)</span><span class="selected-value select-value-color-orange">R：電阻；單位：歐姆(Ω)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span></td><td class="cell-NqOr">電流流經電阻器產生的熱功率</td><td class="cell-RhS&gt;"></td></tr><tr id="5223eaa5-8791-4be0-bd92-3296a3a7e5d9"><td class="cell-title"><a href="https://www.notion.so/5223eaa587914be0bd923296a3a7e5d9?pvs=21">電源的電功率</a></td><td class="cell-B~w^">P = W(<strong>Δt</strong>)⁻¹ = qε(<strong>Δt</strong>)⁻¹ = Iε</td><td class="cell-AeN~"><span class="selected-value select-value-color-red">I：電流；單位：安培(A)</span><span class="selected-value select-value-color-blue">P：電功率；單位：瓦特(W)</span><span class="selected-value select-value-color-blue">W：功；單位：焦耳(J)</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-pink">t：時間；單位：秒(s)</span><span class="selected-value select-value-color-brown">ε：電動勢；單位：伏特(V)</span></td><td class="cell-NqOr">每單位時間對電荷所做的功</td><td class="cell-RhS&gt;"></td></tr><tr id="02c26d4b-822d-47ba-a2be-af71711100d6"><td class="cell-title"><a href="https://www.notion.so/02c26d4b822d47baa2beaf71711100d6?pvs=21">電器的電功率</a></td><td class="cell-B~w^">P = <strong>Δ</strong>U(<strong>Δt</strong>)⁻¹ = qV(<strong>Δt</strong>)⁻¹ = IV</td><td class="cell-AeN~"><span class="selected-value select-value-color-blue">P：電功率；單位：瓦特(W)</span><span class="selected-value select-value-color-default">U：電位能；單位：焦耳(J)</span><span class="selected-value select-value-color-green">V：伏特；單位：焦耳(J)(庫倫(C))⁻¹</span><span class="selected-value select-value-color-purple">q：電量；單位：庫倫(C)</span><span class="selected-value select-value-color-pink">t：時間；單位：秒(s)</span></td><td class="cell-NqOr">每單位時間所消耗的電位能</td><td class="cell-RhS&gt;"></td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

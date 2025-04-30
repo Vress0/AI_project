@@ -1,0 +1,8 @@
+streamlit
+pymatgen
+ase
+chgnet
+matminer
+openai
+matplotlib
+numpy
